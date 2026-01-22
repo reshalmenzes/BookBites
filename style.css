@@ -1,0 +1,47 @@
+body {
+    background:#628ECB;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+    font-family:Arial;
+}
+
+.container {
+    background:#F0F3FA;
+    width:420px;
+    padding:20px;
+    border-radius:12px;
+}
+
+input, button {
+    width:100%;
+    padding:10px;
+    margin:8px 0;
+}
+
+button {
+    background:#628ECB;
+    color:white;
+    border:none;
+    border-radius:6px;
+}
+
+.book {
+    display:flex;
+    gap:10px;
+    margin:10px 0;
+    background:white;
+    padding:10px;
+    border-radius:6px;
+}
+
+.book img {
+    width:60px;
+    height:80px;
+    object-fit:cover;
+}
+
+.logout {
+    background:#d9534f;
+}
