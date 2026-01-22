@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>BookBites - Sign Up</title>
+<link rel="stylesheet" href="style.css">
+<script>
+function signupUser() {
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value.trim();
+    const genres = Array.from(
+        document.querySelectorAll('input[name="genre"]:checked')
+    ).map(cb => cb.value);
+
+    if (!name || !email || !password || genres.length === 0) {
+        alert("Please fill all fields");
+        return;
+    }
+
+    localStorage.setItem("userData", JSON.stringify({name,email,password,genres}));
+    alert("Signup successful!");
+    window.location.href = "login.html";
+}
+</script>
+</head>
+
+<body>
+<div class="container">
+<h2>Sign Up</h2>
+<input id="name" placeholder="Name">
+<input id="email" placeholder="Email">
+<input id="password" type="password" placeholder="Password">
+
+<h4>Select Genres</h4>
+<label><input type="checkbox" name="genre" value="Fiction"> Fiction</label><br>
+<label><input type="checkbox" name="genre" value="Science-Fiction"> Science-Fiction</label><br>
+<label><input type="checkbox" name="genre" value="Non-Fiction"> Non-Fiction</label><br>
+<label><input type="checkbox" name="genre" value="Psychology"> Psychology</label><br>
+<label><input type="checkbox" name="genre" value="Philosophy"> Philosophy</label><br>
+
+<button onclick="signupUser()">Sign Up</button>
+</div>
+</body>
+</html>
