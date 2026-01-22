@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>BookBites - Home</title>
+<link rel="stylesheet" href="style.css">
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const user = JSON.parse(localStorage.getItem("userData"));
+    if (!user) location.href="login.html";
+
+    document.getElementById("welcome").innerText =
+        "Welcome, " + user.name;
+
+    const books = [
+        {genre:"Fiction", title:"The Alchemist", desc:"Follow your dreams", img:"images/alchemist.jpg"},
+        {genre:"Science-Fiction", title:"Dune", desc:"Sci-fi epic", img:"images/dune.jpg"},
+        {genre:"Non-Fiction", title:"Sapiens", desc:"History of mankind", img:"images/sapiens.jpg"},
+        {genre:"Non-Fiction", title:"Atomic Habits", desc:"Build better habits", img:"images/atomic.jpg"},
+        {genre:"Philosophy", title:"Letters from a Stoic", desc:"Wisdom of life", img:"images/stoic.jpg"},
+        {genre:"Psychology", title:"Man’s Search for Meaning", desc:"Purpose & hope", img:"images/psychology.jpg"}
+    ];
+
+    const box = document.getElementById("books");
+
+    books
+      .filter(b => user.genres.includes(b.genre))
+      .forEach(b => {
+        box.innerHTML += `
+        <div class="book">
+            <img src="${b.img}">
+            <div>
+                <h4>${b.title}</h4>
+                <p>${b.desc}</p>
+                <small>${b.genre}</small>
+            </div>
+        </div>`;
+      });
+
+    document.getElementById("logout").onclick = () => {
+        localStorage.clear();
+        location.href="login.html";
+    };
+});
+</script>
+</head>
+
+<body>
+<div class="container">
+<h2 id="welcome"></h2>
+<div id="books"></div>
+<button id="logout" class="logout">Logout</button>
+</div>
+</body>
+</html>
